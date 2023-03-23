@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PlayersContext from '../context/PlayersContext';
 import Stats from './Stats.js';
 import Stopwatch from './Stopwatch.js';
 
-const Header = (props) => {
+const Header = () => {
+  const {players} = useContext(PlayersContext);
   return (
     <header>
-      <Stats players={props.players}/>
-      <h1>{props.title}</h1>
+      <Stats players={players} />
+      <h1>Scoreboard</h1>
       <Stopwatch />
     </header>
   );

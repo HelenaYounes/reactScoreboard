@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {PlayersProvider} from './context/PlayersContext';
 import App from './components/App.js';
 import './App.css';
 import reportWebVitals from './reportWebVitals';
@@ -7,7 +8,9 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <PlayersProvider>
+      <App />
+    </PlayersProvider>
   </React.StrictMode>
 );
 

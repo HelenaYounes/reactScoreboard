@@ -1,28 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useRef } from 'react';
+import PlayersContext from '../context/PlayersContext';
 
-const AddPlayerForm = (props) => {
-  const [value, setValue] = useState("");
-
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    props.addPlayer(value);
-    setValue("");
-  }
+const AddPlayerForm = () => {
+  const {nextPlayerId, actions, value} = useContext(PlayersContext);
 
   return(
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => actions.handleSubmit(e)}>
       <input
         type="text"
         value= {value}
         placeholder="Enter Name"
-        onChange={(e)=> setValue(e.target.value)}
+        onChange={(e)=> actions.setValue(e.target.value)}
       />
       <input
         type= "submit"
         placeholder= "Add player"
       />
     </form>
-
   );
 }
 

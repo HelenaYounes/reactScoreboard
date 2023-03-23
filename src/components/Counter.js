@@ -1,29 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PlayersContext from '../context/PlayersContext';
 
 const Counter = (props) => {
-  // state = {
-  //   score: 0
-  // };
-
-  // const incrementScore = () => {
-  //   setScore(prevScore => prevScore + 1);
-  //   // this.setState( prevState => ({
-  //   //   score: prevState.score + 1
-  //   // }));
-  // }
-  //
-  // const decrementScore = () => {
-  //   setScore(prevScore => prevScore - 1);
-  //   // this.setState( prevState => ({
-  //   //   score: prevState.score - 1
-  //   // }));
-  // }
-
+  const {player} =props;
+  const {players, actions} = useContext(PlayersContext);
   return (
     <div className="counter">
-      <button className="counter-action decrement" onClick={() => props.changeScore(props.id,-1)}> - </button>
-      <span className="counter-score">{props.score}</span>
-      <button className="counter-action increment" onClick={() => props.changeScore(props.id,+1)}> + </button>
+      <button className="counter-action decrement" onClick={()=> actions.handleScoreChange(player.id, -1)}> - </button>
+      <span className="counter-score">{player.score}</span>
+      <button className="counter-action increment" onClick={()=> actions.handleScoreChange(player.id, +1)}> + </button>
     </div>
   );
 }
